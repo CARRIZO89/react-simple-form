@@ -8,7 +8,6 @@ class ContactList extends Component {
     this.state = {
       contactList: []
     };
-
     store.subscribe(() => {
       this.setState({
         contactList: store.getState().contactList
@@ -17,19 +16,26 @@ class ContactList extends Component {
   }
 
   render() {
-    console.log(store.getState().contactList)
     return (
       <Table responsive>
         <thead>
           <tr>
             <th>Name</th>
+            <th>Surname</th>
+            <th>Birthday</th>
           </tr>
         </thead>
         <tbody>
-          {this.state.contactList.map(name =>
+          {this.state.contactList.map(contact =>
             <tr>
               <td>
-                {name}
+                {contact.name}
+              </td>
+              <td>
+                {contact.surname}
+              </td>
+              <td>
+                {contact.birthday}
               </td>
             </tr>
           )}
