@@ -1,48 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Table } from 'react-bootstrap';
-import store from '../store'
+import { connect } from 'react-redux';
 
-class ContactList extends Component {
-  constructor(){
-    super();
-    this.state = {
-      contactList: []
-    };
-    store.subscribe(() => {
-      this.setState({
-        contactList: store.getState().contactList
-      });
-    });
-  }
-
-  render() {
-    return (
-      <Table responsive>
-        <thead>
+const ContactList = (props) => {
+  return (
+    <Table responsive>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Birthday</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.state.contactList.map(contact =>
           <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Birthday</th>
+            <td>
+              {contact.name}
+            </td>
+            <td>
+              {contact.surname}
+            </td>
+            <td>
+              {contact.birthday}
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {this.state.contactList.map(contact =>
-            <tr>
-              <td>
-                {contact.name}
-              </td>
-              <td>
-                {contact.surname}
-              </td>
-              <td>
-                {contact.birthday}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
-    );
-  }
+        )}
+      </tbody>
+    </Table>
+  );
 }
 
-export default ContactList;
+const mapStateToProps = state => {
+  return {
+    contactList: state.contactList
+  };
+};
+
+export default connect(mapStateToProps)(ContactList);
