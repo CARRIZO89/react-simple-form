@@ -20,7 +20,7 @@ class ContactForm extends Component {
   handleChange (event) {
     const { name, value } = event.target;
     let contact = this.state.contact
-    contact[name] = value
+    contact[name] = value //contact es un hash, por eso se accede a los elementos del mismo de la forma "contact[name]"
     this.setState({
       contact
     });
@@ -31,15 +31,16 @@ class ContactForm extends Component {
     const contact = {
       name: this.state.contact.name,
       surname: this.state.contact.surname,
+      country: this.state.contact.country,
       birthday: this.state.contact.birthday
     };
 
-    alert('A name was submitted: ' + contact.name );
+    alert('Hello ' + contact.name + ' from ' + contact.country + '.' );
     this.addToList(contact);
   }
 
   render() {
-    const { name, surname, birthday } = this.state.contact
+    const { name, surname, country ,birthday } = this.state.contact
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -54,6 +55,15 @@ class ContactForm extends Component {
             Surname:
             <input type="text" name='surname' value={surname} onChange={this.handleChange} />
           </label>
+        </div>
+        <div>
+          <label>Countries:</label>
+          <select name='country' value={country} onChange={this.handleChange}>
+            <option>Argentina</option>
+            <option>Chile</option>
+            <option>Brazil</option>
+            <option>Uruguay</option>
+          </select>
         </div>
         <div>
           <label>
