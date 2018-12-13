@@ -13,7 +13,7 @@ const ContactList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.state.contactList.map(contact =>
+        {props.contactList.map(contact =>
           <tr>
             <td>
               {contact.name}
