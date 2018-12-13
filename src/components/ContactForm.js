@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store';
+import { addToList } from '../actionCreators';
 
 class ContactForm extends Component {
   constructor() {
@@ -77,10 +78,7 @@ class ContactForm extends Component {
   }
 
   addToList(contact) {
-    store.dispatch({
-      type: "ADD_TO_LIST",
-      contact
-    })
+    store.dispatch(addToList(contact));
   }
 }
 
