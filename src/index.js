@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import store from './store';
 import { Provider } from 'react-redux';
+import { loadCountries } from './actionCreators';
+
+store.dispatch(loadCountries());
 
 ReactDOM.render(
   <Provider store={store}>
