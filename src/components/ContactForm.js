@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import store from '../store';
 import { addToList } from '../actionCreators';
+import { connect } from 'react-redux';
 
 class ContactForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       contact: {
         name: '',
@@ -13,12 +13,15 @@ class ContactForm extends Component {
         birthday: ''
       }
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange (event) {
+  loadCountries() {
+    return this.props.countries.map( country =>
+      <option key={country} value={country}>{country}</option>
+    )
+  }
+
+  handleChange = (event) => {
     const { name, value } = event.target;
     let contact = this.state.contact
     contact[name] = value //contact es un hash, por eso se accede a los elementos del mismo de la forma "contact[name]"
@@ -27,7 +30,7 @@ class ContactForm extends Component {
     });
   }
 
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     const contact = {
       name: this.state.contact.name,
@@ -37,7 +40,7 @@ class ContactForm extends Component {
     };
 
     alert('Hello ' + contact.name + ' from ' + contact.country + '.' );
-    this.addToList(contact);
+    this.props.addToList(contact);
   }
 
   render() {
@@ -59,11 +62,8 @@ class ContactForm extends Component {
         </div>
         <div>
           <label>Countries:</label>
-          <select name='country' value={country} onChange={this.handleChange}>
-            <option>Argentina</option>
-            <option>Chile</option>
-            <option>Brazil</option>
-            <option>Uruguay</option>
+          <select name='country' onChange={this.handleChange}>
+            {this.loadCountries()}
           </select>
         </div>
         <div>
@@ -76,10 +76,20 @@ class ContactForm extends Component {
       </form>
     );
   }
-
-  addToList(contact) {
-    store.dispatch(addToList(contact));
-  }
 }
 
-export default ContactForm;
+const mapStateToProps = state => {
+  return {
+    countries: state.countries
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToList(contact) {
+      dispatch(addToList(contact));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
