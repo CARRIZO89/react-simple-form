@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addToList } from '../actionCreators';
+import { addToList, setCurrentContact } from '../actionCreators';
 import { connect } from 'react-redux';
 
 class ContactForm extends Component {
@@ -41,10 +41,12 @@ class ContactForm extends Component {
 
     alert('Hello ' + contact.name + ' from ' + contact.country + '.' );
     this.props.addToList(contact);
+    this.props.setCurrentContact(contact);
+    this.setState({name: '', surname: '', country:'', birthday: ''});
   }
 
   render() {
-    const { name, surname, country ,birthday } = this.state.contact
+    const { name, surname,birthday } = this.state.contact
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -88,6 +90,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addToList(contact) {
       dispatch(addToList(contact));
+    },
+    setCurrentContact(contact) {
+      dispatch(setCurrentContact(contact));
     }
   };
 };

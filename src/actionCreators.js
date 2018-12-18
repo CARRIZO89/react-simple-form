@@ -19,4 +19,11 @@ const addToList = contact => {
   };
 };
 
-export { loadCountries, addToList };
+const setCurrentContact = current_contact => {
+  return {
+    type: "SET_CURRENT_CONTACT",
+    current_contact
+  };
+};
+
+export { loadCountries, addToList, setCurrentContact };
