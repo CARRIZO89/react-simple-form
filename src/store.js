@@ -14,6 +14,11 @@ const reducer = (state, action) => {
         ...state,
         countries: action.countries
       }
+  } else {
+    return {
+      ...state,
+      current_contact: action.current_contact
+    }
   }
   return state;
 };
