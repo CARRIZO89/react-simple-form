@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import { Navbar, Grid, Row, Col } from 'react-bootstrap';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
-import Message from './components/Message';
+import WelcomeMessage from './components/WelcomeMessage';
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
           <Row>
             <Col md={6}>
               <ContactForm />
-              <Message />
+              <WelcomeMessage />
             </Col>
             <Col md={6}>
               <ContactList />

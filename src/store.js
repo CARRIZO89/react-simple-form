@@ -20,7 +20,7 @@ const reducer = (state, action) => {
       current_contact: action.current_contact
     }
   }
-  return state;
+  return state
 };
 
 export default createStore(
