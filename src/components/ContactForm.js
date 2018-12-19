@@ -39,7 +39,6 @@ class ContactForm extends Component {
       birthday: this.state.contact.birthday
     };
 
-    alert('Hello ' + contact.name + ' from ' + contact.country + '.' );
     this.props.addToList(contact);
     this.props.setCurrentContact(contact);
     this.setState({name: '', surname: '', country:'', birthday: ''});
