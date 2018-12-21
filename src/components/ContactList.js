@@ -8,7 +8,7 @@ const ContactList = (props) => {
       <thead>
         <tr>
           <th>Name</th>
-          <th>Surname</th>
+          <th>Country</th>
           <th>Birthday</th>
         </tr>
       </thead>
@@ -19,7 +19,7 @@ const ContactList = (props) => {
               {contact.name}
             </td>
             <td>
-              {contact.surname}
+              {contact.country}
             </td>
             <td>
               {contact.birthday}
