@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { addToList, setCurrentContact } from '../actionCreators';
 import { connect } from 'react-redux';
+import { FormGroup, FormControl } from 'react-bootstrap';
+import './ContactForm.css'
 
 class ContactForm extends Component {
   constructor(props) {
@@ -49,31 +51,22 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>
-            Name:
-            <input type="text" name='name' value={name} onChange={this.handleChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Surname:
-            <input type="text" name='surname' value={surname} onChange={this.handleChange} />
-          </label>
-        </div>
-        <div>
-          <label>Countries:</label>
-          <select name='country' onChange={this.handleChange}>
+        <FormGroup>
+          <FormControl type="text" placeholder='Name' name='name' value={name} onChange={this.handleChange} />
+        </FormGroup>
+        <FormGroup>
+          <FormControl type="text" placeholder='Surname' name='surname' value={surname} onChange={this.handleChange} />
+        </FormGroup>
+        <FormGroup>
+          <FormControl componentClass="select" name='country' onChange={this.handleChange}>
+            <option value="select">Select Country</option>
             {this.loadCountries()}
-          </select>
-        </div>
-        <div>
-          <label>
-            Birthday:
-            <input type="text" name='birthday' value={birthday} onChange={this.handleChange} />
-          </label>
-        </div>
-        <input type="submit" value="Submit" />
+          </FormControl>
+        </FormGroup>
+        <FormGroup>
+          <FormControl type="text" placeholder='Birthday' name='birthday' value={birthday} onChange={this.handleChange} />
+        </FormGroup>
+        <input id="btn-save" type="submit" value="Save" />
       </form>
     );
   }
