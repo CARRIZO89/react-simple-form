@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-const ContactList = (props) => {
+export const ContactList = (props) => {
   return (
     <Table responsive>
       <thead>
@@ -14,7 +14,7 @@ const ContactList = (props) => {
       </thead>
       <tbody>
         {props.contactList.map(contact =>
-          <tr>
+          <tr id="contact">
             <td>
               {contact.name}
             </td>
