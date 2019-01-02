@@ -1,10 +1,10 @@
 import React from 'react';
 import ConnectedContactList from '../../components/ContactList';
-import { render } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store'
 import enzyme from 'enzyme';
+import { render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import configureStore from 'redux-mock-store'
+import { Provider } from 'react-redux';
 
 enzyme.configure({ adapter: new Adapter() });
 
