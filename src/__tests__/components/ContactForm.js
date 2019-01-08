@@ -15,17 +15,18 @@ it('add contact to contact list', () => {
     contact: [{
       name: 'Nicolas',
       country: 'Argentina',
-      birthday: '02/05/1991'}]
+      birthday: '02/05/1991'}],
+    countries: []
   });
 
   const wrapper = mount(
     <Provider store={store}>
       <ConnectedContactForm/>
     </Provider>);
-  wrapper.find('#btn-save').simulate('click');
+  wrapper.find('#contact-form').simulate('submit');
 
-  const action = store.getActions();
-  expect(actions.length).toBe(1);
+  const actions = store.getActions();
+  expect(actions.length).toBe(2);
   expect(actions[0].type).toBe("ADD_TO_LIST");
   expect(actions[0].contact).not.toBeNull();
 });
