@@ -13,8 +13,8 @@ export const ContactList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.contactList.map(contact =>
-          <tr id="contact">
+        {props.contactList.map( (contact, index) =>
+          <tr id="contact" key={index}>
             <td>
               {contact.name}
             </td>

@@ -50,7 +50,7 @@ class ContactForm extends Component {
     const { name, surname,birthday } = this.state.contact
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form id="contact-form" onSubmit={this.handleSubmit}>
         <FormGroup>
           <FormControl type="text" placeholder='Name' name='name' value={name} onChange={this.handleChange} />
         </FormGroup>
