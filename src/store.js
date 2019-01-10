@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
+const initialContact = {name: '', surname: '', country:'', birthday: ''};
+
 const contactList = (state = [], action) => {
   if (action.type === "ADD_TO_LIST") {
     return state.concat(action.contact)
@@ -17,9 +19,9 @@ const countries = (state = [], action) => {
   return state
 };
 
-const current_contact = (state = {}, action) => {
+const current_contact = (state = initialContact, action) => {
   if (action.type === "SET_CURRENT_CONTACT") {
-    return action.contact
+    return action.current_contact
   }
 
   return state
