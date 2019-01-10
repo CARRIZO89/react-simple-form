@@ -5,7 +5,6 @@ class WelcomeMessage extends Component {
 
   splitBirthday(birthday){
     let bir = birthday.split("/");
-    console.log(bir)
     return {day: bir[0], month: bir[1], bornYear: parseInt(bir[2])};
   }
 
