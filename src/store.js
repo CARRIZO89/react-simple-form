@@ -1,30 +1,22 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-const initialState =  { contactList: [], countries: [] };
-
-const reducer = (state, action) => {
+const contactList = (state = [], action) => {
   if (action.type === "ADD_TO_LIST") {
-    return {
-      ...state,
-      contactList: state.contactList.concat(action.contact)
-    }
-  } else if (action.type === "LOAD_COUNTRIES") {
-      return {
-        ...state,
-        countries: action.countries
-      }
+    return state.concat(action.contact)
   } else {
-    return {
-      ...state,
-      current_contact: action.current_contact
-    }
+    return action.current_contact
+  }
+  return state
+};
+
+const countries = (state = [], action) => {
+  if (action.type === "LOAD_COUNTRIES") {
+    return action.countries
   }
   return state
 };
 
 export default createStore(
-  reducer,
-  initialState,
-  applyMiddleware(thunk)
+  combineReducers({ contactList, countries }),applyMiddleware(thunk)
 );
