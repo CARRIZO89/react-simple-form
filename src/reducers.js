@@ -24,4 +24,4 @@ const current_contact = (state = initialContact, action) => {
   return state
 };
 
-export {contactList, countries, current_contact};
+export { contactList, countries, current_contact };
