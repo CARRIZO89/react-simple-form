@@ -7,17 +7,18 @@ describe('contactList', () => {
 
   it('recives contacts', () => {
     const contact_list = [
-      { 
-        name: "Miguel", 
-        surname: "Carrizo", 
-        country: "Argentina", 
-        birthday: "12/06/1989" 
+      {
+        name: "Miguel",
+        surname: "Carrizo",
+        country: "Argentina",
+        birthday: "12/06/1989"
       },
-      { 
-        name: "Nicolas", 
-        surname: "Carrizo", 
-        country: "Argentina", 
-        birthday: "12/06/1992" }
+      {
+        name: "Nicolas",
+        surname: "Carrizo",
+        country: "Argentina",
+        birthday: "12/06/1992"
+      }
     ];
 
     expect(
@@ -46,10 +47,10 @@ describe('countries', () => {
 
 describe('current_contact', () => {
   it('return empty initial state when state is undefined', () => {
-    const current_contact_empty = { 
-      name: "", 
-      surname: "", 
-      country: "", 
+    const current_contact_empty = {
+      name: "",
+      surname: "",
+      country: "",
       birthday: ""
     }
 
@@ -57,8 +58,8 @@ describe('current_contact', () => {
   });
 
   it('recive contact', () => {
-    const cc = { 
-      name: "Maria", 
+    const cc = {
+      name: "Maria",
       surname: "Juarez",
       country: "Argentina",
       birthday: "12/06/1989"
